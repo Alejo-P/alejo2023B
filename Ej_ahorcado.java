@@ -109,7 +109,7 @@ public class Ej_ahorcado {
                     adi+=letra; //Agregar la letra acertada
                     ind=Palabra_seleccionada.indexOf(letra, ind + 1); //Buscar si la letra ingresada se repite otra vez
                     //Ejemplo:
-                    //Si palabra es "casa" y letra es "a", entonces ind es 2 y 4
+                    //Si palabra es "casa" y letra es "a", entonces ind es 1 y 3
                     //texto=____ ahora es texto=_a_a
                 }
                 if (Palabra.equals(Palabra_seleccionada)) //Si la palabra es igual a la palabra generada
