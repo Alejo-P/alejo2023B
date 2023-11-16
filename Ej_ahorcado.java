@@ -10,7 +10,7 @@ public class Ej_ahorcado {
         return cadena.matches("[a-zA-Z]+"); // Utiliza una expresión regular para verificar si son solo letras
     }
 
-    public String Verificar (String texto) //Funcion con parametro para verificar que la cadena sea estrictamente una letra
+    public String Verificar (String texto) //Funcion con  parametro para verificar que la cadena sea estrictamente una letra
     {
         Scanner vld=new Scanner(System.in); // Crea un objeto de la clase Scanner para recibir entrada del usuario.
         if (texto.length()!=1) //Verifica si se ingreso solo una letra
