@@ -2,7 +2,7 @@ import java.util.Random; //Libreria para trabajar con numeros aleatorios
 import java.util.Scanner; //Libreria para leer los datos ingresados por teclado
 public class Ej_ahorcado {
     private Scanner ingreso; //Crear un objeto de la clase Scanner
-    static String[] bp = {" O ", "/", "|", "\\", "/", "\\"}; //Crear lista para dibujar el cuerpo del ahorcado
+    static String[] bp = {" O ", "/", "|", "\\", "/"," ", "\\"}; //Crear lista para dibujar el cuerpo del ahorcado
     static String cabeza, cuerpo, piernas; //Variables que almacenaran cada parte del cuerpo
     // Función para verificar si una cadena contiene solo letras
     private static boolean esLetra(String cadena)
@@ -76,7 +76,7 @@ public class Ej_ahorcado {
             Palabra+= "_";
             longitud++;
         }
-        while (intentos<6 && !adivinado) //Comprobar que no se haya perdido o no se haya adivinado la palabra
+        while (intentos<7 && !adivinado) //Comprobar que no se haya perdido o no se haya adivinado la palabra
         {
             System.out.println("Adivina la palabra: "+Palabra+" Longitud: "+longitud+" letras"); //mostrar detalles de la palabra
             System.out.println("Ingresa la palabra: ");
@@ -194,7 +194,6 @@ public class Ej_ahorcado {
             {
                 //Almacena las piernas
                 piernas+=bp[i];
-                piernas+=" ";
             }
         }
         System.out.println(cabeza);
