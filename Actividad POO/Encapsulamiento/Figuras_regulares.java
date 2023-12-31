@@ -79,8 +79,9 @@ public class Figuras_regulares
         else
         {
             double angulo_central=360/this.num_lados;
-            double apotema=this.alto/(2*Math.tan(angulo_central/2));
-            this.area=(this.alto*apotema*this.num_lados)/2;
+            double radianes=Math.toRadians(angulo_central/2);
+            double apotema=this.alto/(2*Math.tan(radianes));
+            this.area=(this.perimetro*apotema)/2;
         }
     }
     //metodo para obtener toda la informacion de la figura
