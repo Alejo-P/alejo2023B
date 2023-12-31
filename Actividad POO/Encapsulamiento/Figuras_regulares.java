@@ -49,7 +49,7 @@ public class Figuras_regulares
         }
         else
         {
-            this.perimetro = (this.num_lados * (ancho));
+            this.perimetro = (this.num_lados * ancho);
         }
     }   
     
@@ -78,20 +78,20 @@ public class Figuras_regulares
         }
         else
         {
-            double angulo_central=(360)/this.num_lados;
+            double angulo_central=360/this.num_lados;
             double apotema=this.alto/(2*Math.tan(angulo_central/2));
-            this.area=(this.area*apotema*this.num_lados)/2;
+            this.area=(this.alto*apotema*this.num_lados)/2;
         }
     }
     //metodo para obtener toda la informacion de la figura
-    public void Info()
+    public String Info()
     {
-        //Comprobar si las variables perimetro y area tienen asignado un valor
-        if (this.perimetro==0 || this.area==0)
-        {
+        // Comprobar si las variables perimetro y area tienen asignado un valor
+        if (this.perimetro == 0 || this.area == 0) {
             CalcularPerimetro();
             CalcularArea();
         }
-        System.out.printf("El %s de lados %.3f m, %.3f m\nTiene un perimetro de %.3f m y area de %.3f m^2\n",this.Nombre_figura, this.getAncho(), +this.getAlto(), this.perimetro, this.area);
+        return String.format("El %s de lados %.3f m, %.3f m\nTiene un perimetro de %.3f m y area de %.3f m^2\n",
+                this.Nombre_figura, this.getAncho(), this.getAlto(), this.perimetro, this.area);
     }
 }
