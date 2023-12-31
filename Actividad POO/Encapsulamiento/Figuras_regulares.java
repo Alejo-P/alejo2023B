@@ -41,7 +41,7 @@ public class Figuras_regulares
     public double getAncho(){return this.ancho;}
     public double getAlto(){return this.alto;}
     //Metodo Calcular Perimetro
-    public void CalcularPerimetro()
+    private void CalcularPerimetro()
     {
         if (this.Nombre_figura.equals("Cuadrado") || this.Nombre_figura.equals("Rectangulo"))
         {
@@ -54,7 +54,7 @@ public class Figuras_regulares
     }   
     
     //Metodo Calcular Area
-    public void CalcularArea()
+    private void CalcularArea()
     {
         boolean figura_especial=true;
         for (int i=0; i<Figuras_basicas.length; i++)
