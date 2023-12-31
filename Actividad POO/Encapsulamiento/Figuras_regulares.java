@@ -3,15 +3,15 @@ public class Figuras_regulares
     // Definir una lista de algunas figuras elementales
     String [] Figuras_basicas={"Triangulo","Cuadrado","Rectangulo"};
     //Atributos
-    private float ancho;
-    private float alto;
+    private double ancho;
+    private double alto;
     private int num_lados;
-    private float perimetro;
+    private double perimetro;
     private double area;
     private String Nombre_figura;
 
     //Constructores
-    public Figuras_regulares(float base, float altura)
+    public Figuras_regulares(double base, double altura)
     {
         this.ancho = base;
         this.alto= altura;
@@ -19,7 +19,7 @@ public class Figuras_regulares
         this.Nombre_figura="Rectangulo";
     }
 
-    public Figuras_regulares(float lado)
+    public Figuras_regulares(double lado)
     { 
         //Esta linea
         this(lado,lado);
@@ -30,7 +30,7 @@ public class Figuras_regulares
         this.Nombre_figura="Cuadrado";
     }
 
-    public Figuras_regulares(float lado, String Nombre, int num_lados)
+    public Figuras_regulares(double lado, String Nombre, int num_lados)
     {
         this(lado, lado);
         this.Nombre_figura=Nombre;
@@ -38,8 +38,8 @@ public class Figuras_regulares
     }
 
     //Metodos
-    public float getAncho(){return this.ancho;}
-    public float getAlto(){return this.alto;}
+    public double getAncho(){return this.ancho;}
+    public double getAlto(){return this.alto;}
     //Metodo Calcular Perimetro
     public void CalcularPerimetro()
     {
@@ -68,7 +68,8 @@ public class Figuras_regulares
         {
             if (this.Nombre_figura.equals("Triangulo"))
             {
-                this.area=(ancho*alto)/2;
+                double altura=Math.sqrt(Math.pow(this.alto, 2)-Math.pow(this.ancho/2, 2));
+                this.area=(ancho*altura)/2;
             }
             else
             {
@@ -83,7 +84,7 @@ public class Figuras_regulares
         }
     }
     //metodo para obtener toda la informacion de la figura
-    public String Info()
+    public void Info()
     {
         //Comprobar si las variables perimetro y area tienen asignado un valor
         if (this.perimetro==0 || this.area==0)
@@ -91,6 +92,6 @@ public class Figuras_regulares
             CalcularPerimetro();
             CalcularArea();
         }
-        return "La "+this.Nombre_figura+" mide Ancho: "+this.getAncho()+", Alto:"+this.getAlto()+".\nSu Perimetro es:"+this.perimetro+", y su Area es:"+this.area;
+        System.out.printf("El %s de lados %.3f m, %.3f m\nTiene un perimetro de %.3f m y area de %.3f m^2\n",this.Nombre_figura, this.getAncho(), +this.getAlto(), this.perimetro, this.area);
     }
 }
