@@ -2,7 +2,7 @@ public class Figuras_regulares
 {
     // Definir una lista de algunas figuras elementales
     String [] Figuras_basicas={"Triangulo","Cuadrado","Rectangulo"};
-    //Atributos
+    //Atributos (encapsulados [privados])
     private double ancho;
     private double alto;
     private int num_lados;
@@ -11,7 +11,7 @@ public class Figuras_regulares
     private String Nombre_figura;
 
     //Constructores
-    public Figuras_regulares(double base, double altura)
+    public Figuras_regulares(double base, double altura) //Para rectangulos
     {
         this.ancho = base;
         this.alto= altura;
@@ -19,30 +19,32 @@ public class Figuras_regulares
         this.Nombre_figura="Rectangulo";
     }
 
-    public Figuras_regulares(double lado)
+    public Figuras_regulares(double lado) // Para cuadrados
     { 
         //Esta linea
         this(lado,lado);
-        this.num_lados=4;
         /*Omite todo esto:
         this.ancho=lado;
         this.alto=lado;*/
+        this.num_lados=4;
         this.Nombre_figura="Cuadrado";
     }
 
-    public Figuras_regulares(double lado, String Nombre, int num_lados)
+    public Figuras_regulares(double lado, String Nombre, int num_lados) // Para cualquier otra figura regular
     {
         this(lado, lado);
         this.Nombre_figura=Nombre;
         this.num_lados=num_lados;
     }
 
-    //Metodos
+    //Metodos Getters
     public double getAncho(){return this.ancho;}
     public double getAlto(){return this.alto;}
-    //Metodo Calcular Perimetro
+
+    //Metodo Calcular Perimetro (encapsulado)
     private void CalcularPerimetro()
     {
+        // Verificar de que figura se desea obtener el perimetro (cudrado, rectangulo, pentagono, etc)
         if (this.Nombre_figura.equals("Cuadrado") || this.Nombre_figura.equals("Rectangulo"))
         {
             this.perimetro = (2* (this.ancho + this.alto));
@@ -53,10 +55,12 @@ public class Figuras_regulares
         }
     }   
     
-    //Metodo Calcular Area
+    //Metodo Calcular Area (encapsulado)
     private void CalcularArea()
     {
+        // Verificar de que figura se desea obtener el area (cudrado, rectangulo, pentagono, etc)
         boolean figura_especial=true;
+        // Comprobar si el nombre de la figura esta en el arreglo de figuras estandar (calculos simples)
         for (int i=0; i<Figuras_basicas.length; i++)
         {
             if (Figuras_basicas[i].equals(this.Nombre_figura))
@@ -64,7 +68,8 @@ public class Figuras_regulares
                 figura_especial=false;
             }
         }
-        if (!figura_especial)
+
+        if (!figura_especial) // Si la figura es de 4 lados o menos (triangulo, rectangulo o cuadrado)
         {
             if (this.Nombre_figura.equals("Triangulo"))
             {
@@ -76,7 +81,7 @@ public class Figuras_regulares
                 this.area=(ancho * alto);
             }
         }
-        else
+        else //Si la figura es de mas de 4 lados (Calculos extra para el area)
         {
             double angulo_central=360/this.num_lados;
             double radianes=Math.toRadians(angulo_central/2);
