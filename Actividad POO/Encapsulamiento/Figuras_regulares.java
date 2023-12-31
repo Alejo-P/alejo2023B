@@ -1,4 +1,5 @@
-public class Figuras {
+public class Figuras_regulares
+{
     // Definir una lista de algunas figuras elementales
     String [] Figuras_basicas={"Triangulo","Cuadrado","Rectangulo"};
     //Atributos
@@ -8,15 +9,17 @@ public class Figuras {
     private float perimetro;
     private double area;
     private String Nombre_figura;
+
     //Constructores
-    public Figuras(float base, float altura)
+    public Figuras_regulares(float base, float altura)
     {
         this.ancho = base;
         this.alto= altura;
         this.num_lados=4;
         this.Nombre_figura="Rectangulo";
     }
-    public Figuras(float lado)
+
+    public Figuras_regulares(float lado)
     { 
         //Esta linea
         this(lado,lado);
@@ -26,12 +29,14 @@ public class Figuras {
         this.alto=lado;*/
         this.Nombre_figura="Cuadrado";
     }
-    public Figuras(float lado, String Nombre, int num_lados)
+
+    public Figuras_regulares(float lado, String Nombre, int num_lados)
     {
         this(lado, lado);
         this.Nombre_figura=Nombre;
         this.num_lados=num_lados;
     }
+
     //Metodos
     public float getAncho(){return this.ancho;}
     public float getAlto(){return this.alto;}
