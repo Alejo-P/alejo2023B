@@ -26,6 +26,3 @@ public class ManejoExcepciones
         sc.close();
     }
 }
-    
-       
-    
