@@ -1,6 +1,6 @@
 public class Conversiones {
     public static void main(String[] args) {
-        // Definir variables inicialesss
+        // Definir variables iniciales
         int entero = 15;
         double decimal = 12.34;
 
