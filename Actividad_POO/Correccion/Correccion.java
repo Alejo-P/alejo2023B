@@ -5,12 +5,16 @@ import java.util.List;
 public class Correccion {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String error;
+        String error, GeneroCancion, TituloCancion, AutorCancion;
         List<String> Canciones = new ArrayList<>();
 
         do {
-            System.out.print("Ingrese el género de la canción >");
-            String GeneroCancion = sc.nextLine();
+            
+            do
+            {
+                System.out.print("Ingrese el género de la canción >");
+                GeneroCancion = sc.nextLine();
+            } while (GeneroCancion.length()==0);
             Cancion cancion = new Cancion(GeneroCancion);
 
             do {
@@ -25,19 +29,26 @@ public class Correccion {
                 }
             } while (error.length() != 0);
 
-            System.out.print("\nIngrese el título de la canción >");
-            String TituloCancion = sc.nextLine();
-            cancion.setTitulo(TituloCancion);
-
-            System.out.print("\nIngrese el autor de la canción >");
-            String AutorCancion = sc.nextLine();
-            cancion.setAutor(AutorCancion);
+            do
+            {
+                System.out.print("\nIngrese el título de la canción >");
+                TituloCancion = sc.nextLine();
+                cancion.setTitulo(TituloCancion);
+            } while (TituloCancion.length()==0);
+            
+            do
+            {
+                System.out.print("\nIngrese el autor de la canción >");
+                AutorCancion = sc.nextLine();
+                cancion.setAutor(AutorCancion);
+            } while (AutorCancion.length()==0);
+            
 
             // Agregar a la lista de canciones
             Canciones.add(cancion.toString());
 
-            System.out.print("\n¿Desea ingresar otra canción? (Sí/No) >");
-        } while (sc.nextLine().equalsIgnoreCase("Sí"));
+            System.out.print("\n¿Desea ingresar otra canción? (Si/No) >");
+        } while (sc.nextLine().equalsIgnoreCase("Si"));
 
         // Mostrar la información de todas las canciones ingresadas
         System.out.println("\nMostrando la información de todas las canciones:");
