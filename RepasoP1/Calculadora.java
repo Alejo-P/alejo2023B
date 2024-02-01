@@ -247,6 +247,47 @@ public class Calculadora {
             }
         });
 
+        botonMultiplicacion.addActionListener(new ActionListener() {
+            @Override
+            public  void actionPerformed(java.awt.event.ActionEvent e) {
+                String entrada = pantalla.getText();
+                if (entrada.length()>0 && lista.size()<1)
+                {
+                    lista.add("*");
+                    pantalla.setText(entrada+"*");
+                }
+                else if (entrada.length()>0 && lista.size()>=1)
+                {
+                    Obtener_operacion(entrada);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(Panel, "No hay valores para la multiplicacion!", "Valores invalidos", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        botonDivision.addActionListener(new ActionListener() {
+            @Override
+            public  void actionPerformed(java.awt.event.ActionEvent e) {
+                String entrada = pantalla.getText();
+                if (entrada.length()>0 && lista.size()<1)
+                {
+                    lista.add("/");
+                    pantalla.setText(entrada+"/");
+                }
+                else if (entrada.length()>0 && lista.size()>=1)
+                {
+                    Obtener_operacion(entrada);
+
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(Panel, "No hay valores para la division!", "Valores invalidos", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
         botonIgual.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -260,7 +301,7 @@ public class Calculadora {
         char op=' ';
         String cad="";
         int resultado=0, idx=0;
-        System.out.println("Cadena: "+Cadena);
+        boolean mostrarResultado=true;
         ArrayList <Integer> Numeros = new ArrayList<>();
         for (char c : Cadena.toCharArray())
         {
@@ -272,7 +313,6 @@ public class Calculadora {
             if (Character.isDigit(c))
             {
                 Numeros.add(Integer.parseInt(cad+Character.getNumericValue(c)));
-                System.out.println("Numero: "+Integer.parseInt(cad+Character.getNumericValue(c)));
                 cad="";
             }
             else if (idx>1)
@@ -298,7 +338,38 @@ public class Calculadora {
                 }
             }
         }
-        pantalla.setText(""+resultado);
+        else if (op=='*')
+        {
+            resultado=Numeros.get(0);
+            for (int i=0; i < Numeros.size(); i++)
+            {
+                if (i>0)
+                {
+                    resultado*=Numeros.get(i);
+                }
+            }
+        }
+        else if (op=='/')
+        {
+            resultado=Numeros.get(0);
+            for (int i=0; i < Numeros.size(); i++)
+            {
+                if (i>0 && Numeros.get(i)!=0)
+                {
+                    resultado/=Numeros.get(i);
+                }
+                else if (i>0 && Numeros.get(i)==0)
+                {
+                    JOptionPane.showMessageDialog(Panel, "No podemos dividir para cero", "Division invalida", JOptionPane.WARNING_MESSAGE);
+                    mostrarResultado=false;
+                    break;
+                }
+            }
+        }
+        if (mostrarResultado)
+        {
+            pantalla.setText(""+resultado);
+        }
         lista.clear();
     }
 }
